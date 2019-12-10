@@ -7,14 +7,14 @@ export default class GifSearch extends React.Component{
             search:""
         }
     }
-    handleSearch = event =>{
+    handleSearch = e =>{
         this.setState({
-            search:event.target.value
+            search:e.target.value
         })
     }
     render(){
         return(
-            <form onSubmit={event=>this.props.handleFetch(event,this.state.search)}>
+            <form onSubmit={e=>this.props.handleFetch(e,this.state.search)}>
                 <input type="text" id="search" onChange={this.handleSearch} value={this.state.search} />
                 <button>Find Gifs</button>
             </form>
