@@ -6,25 +6,23 @@ export default class GifListContainer extends React.Component{
     constructor(){
         super();
         this.state = {
-            imgs:[]
+            imgG:[]
         }
     }
-    // componentDidMount(){
-    //     this.handleFetchQuery
-    // }
-    handleFetchQuery = (event,query) =>{
-        event.preventDefault();
+ 
+    handleFetchQuery = (e,query) =>{
+        e.preventDefault();
         fetch('https://api.giphy.com/v1/gifs/search?q='+ query +'&api_key=2HazIuTJSnUIoYCB2EpQvdCZPEPenUwv&rating=g').then(res=>res.json()).then(data=>{
             console.log('inside ',data)
             this.setState({
-                imgs:data.data.slice(0,3)
+                imgG:data.data.slice(0,3)
             })
         }).catch(err=>console.log(err));
     }
     render(){
         return(
             <div>
-                <GifList imgs={this.state.imgs} />
+                <GifList imgG={this.state.imgG} />
                 <GifSearch handleFetch={this.handleFetchQuery} />
             </div>
         );
